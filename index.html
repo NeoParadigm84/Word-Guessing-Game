@@ -55,9 +55,9 @@
             var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
             var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-
+// song to be played if user guesses correctly// 
             var audioElement = document.createElement("audio");
-        audioElement.setAttribute("src", "assets/champion.mp3");
+            audioElement.setAttribute("src", "assets/champion.mp3");
 
             if (options.indexOf(userGuess) > -1) {
 
@@ -65,6 +65,7 @@
                     wins++;
                     numGuesses = 9;
                     guessChoices = [];
+                    // not sure how to get the song to stop playing when new game starts//
                     audioElement.play();
                 }
 
