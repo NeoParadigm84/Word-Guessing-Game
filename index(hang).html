@@ -1,28 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Hangman!</title>
     <!-- <link rel="stylesheet" herf="assets/css/reset.css"> -->
-    <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
     <h1>Lets Play A Game</h1>
     <div class="container">
         <header>
-                <h1>Hange Man</h1>
-                <h3>Game of Thrones Characters</h3>
+            <h1>Hange Man</h1>
+            <h3>Great GOT House</h3>
         </header>
         <div class="underscores">_ _ _ _</div>
-        <br>
+        <br />
         <div class="rightGuess">right guess</div>
-        <br>
+        <br />
         <div class="wrongGuess">wrong guess</div>
-        
     </div>
-    
+    <script text="javascript">
+        // creat an arry for GOT house
+        const word = [
+            "Stark",
+            "Arryn",
+            "Baratheon",
+            "Tully",
+            "Greyjoy",
+            "Lannister",
+            "Tyrell",
+            "Martell",
+            "Targaryen"
+        ];
+        // choose random house from list
+        var randNum = Math.floor(Math.random() * word.length);
+        var rightWord = [];
+        var wrongWord = [];
+        // indicates that randNum should equal the word not the index value
+        var choosenWord = word[randNum];
+        // tracks random selections
+        console.log(choosenWord);
+        // creats underscore variable
+        var underScore = [];
+        // locates word and length uses for loop to cycle through and push number of underscores
+        var generateunderScore = () => {
+            for (var i = 0; i < choosenWord.length; i++) {
+                underScore.push("_");
+            }
+            return underScore;
+        };
+// logs underscores
+        console.log(generateunderScore());
+        // event listner for key press
+        document.addEventListener("keypress", (event) => {
+            var keyword = String.fromCharCode(event.keycode);
+            console.log(keyword);
+            if(choosenWord.indexOf(keyword) > -1) {
+                rightWord.push(keyword);
+                underScore[choosenWord.indexOf(keyword)] = keyword;
+                if(underScore.join('') == choosenWord){
+                    alert("You Win");
+                }
+
+            }
+        else{
+           wrongWord.push(keyword);
+        }
+    </script>
 </body>
+
 </html>
